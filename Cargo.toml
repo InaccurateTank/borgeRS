@@ -1,0 +1,13 @@
+[package]
+name = "borgerbot"
+authors = ["InaccurateTank (Tank#1623)"]
+description = "A poorly assembled custom chatbot"
+repository = "https://github.com/InaccurateTank"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+poise = { version = "0.2.1" }
+tokio = { version = "1.0", features = ["macros", "rt-multi-thread"] }
+regex = { version = "1.5" }
+time = { version = "0.3.9", features = ["formatting"] }
