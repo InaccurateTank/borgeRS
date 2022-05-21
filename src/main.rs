@@ -8,7 +8,6 @@ use poise::serenity_prelude as serenity;
 use std::env;
 
 mod events;
-use events::*;
 mod commands;
 
 type Error = Box<dyn std::error::Error + Send + Sync>;
@@ -101,8 +100,8 @@ async fn main() {
           poise::Event::Message { new_message: msg } => {
             if !msg.is_own(&ctx.cache) {
               let m = msg.content.as_str();
-              borger(ctx, msg, &m).await?;
-              v(ctx, msg, &m).await?;
+              events::borger(ctx, msg, &m).await?;
+              events::v(ctx, msg, &m).await?;
             }
           },
           _ => ()
