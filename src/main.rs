@@ -9,13 +9,12 @@ use std::env;
 
 mod events;
 use events::*;
-// mod commands;
-// use commands::*;
+mod commands;
 
 type Error = Box<dyn std::error::Error + Send + Sync>;
 type Context<'a> = poise::Context<'a, Data, Error>;
 // User data, which is stored and accessible in all command invocations
-struct Data {}
+pub struct Data {}
 
 /// Displays command help prompt.
 #[poise::command(
@@ -84,7 +83,8 @@ async fn main() {
     commands: vec![
       help(),
       about(),
-      register()
+      register(),
+      commands::bottomify()
     ],
     prefix_options: poise::PrefixFrameworkOptions {
       prefix: Some("~".into()),
@@ -102,6 +102,7 @@ async fn main() {
             if !msg.is_own(&ctx.cache) {
               let m = msg.content.as_str();
               borger(ctx, msg, &m).await?;
+              v(ctx, msg, &m).await?;
             }
           },
           _ => ()
