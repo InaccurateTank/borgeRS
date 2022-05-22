@@ -1,10 +1,17 @@
 use crate::{Context, Error};
 
+fn concat(a: &str, b: &str) -> String {
+  let mut result: String = String::with_capacity(a.len() + b.len());
+  result += a;
+  result += b;
+  result
+}
+
 fn byte_to_emoji(value: u8) -> String {
   let mut buffer = String::new();
   let mut value = value;
   if value == 0 {
-    buffer.push_str("❤️");
+    buffer = concat(&buffer, "❤️");
   }
   loop {
     let (emoji, subtract) = match value {
@@ -15,10 +22,10 @@ fn byte_to_emoji(value: u8) -> String {
       1..=4 => (",", 1),
       0 => break,
     };
-    buffer.push_str(emoji);
+    buffer = concat(&buffer, emoji);
     value -= subtract;
   }
-  buffer.push_str("👉👈");
+  buffer = concat(&buffer, "👉👈");
   buffer
 }
 

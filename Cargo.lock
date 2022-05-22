@@ -75,11 +75,24 @@ dependencies = [
 name = "borgerbot"
 version = "0.1.0"
 dependencies = [
+ "brunch",
  "poise",
  "rand",
  "regex",
  "time",
  "tokio",
+]
+
+[[package]]
+name = "brunch"
+version = "0.2.5"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "65432246e57cb97714664152f99b52736ec68fd50cdbb42b35b50e8c4fd3e1ff"
+dependencies = [
+ "dactyl",
+ "num-traits",
+ "serde",
+ "serde_json",
 ]
 
 [[package]]
@@ -151,6 +164,15 @@ checksum = "57952ca27b5e3606ff4dd79b0020231aaf9d6aa76dc05fd30137538c50bd3ce8"
 dependencies = [
  "generic-array",
  "typenum",
+]
+
+[[package]]
+name = "dactyl"
+version = "0.3.4"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "da854a6cadd1cf87bf1a5418adf9b3d08ce58379e571c2e497e4f41ee5ab1ccb"
+dependencies = [
+ "num-traits",
 ]
 
 [[package]]
